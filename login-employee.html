@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="./assets/css/style01.css">
+    <title>AC-Employee Login</title>
+</head>
+<body>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";>
+      
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js"></script>
+
+    <div class="container">
+        <div class="forms">
+            <div class="form login">
+                <span class="title">Employee Login</span>
+                <form action="#">
+                    <div class="input-field">
+                        <input type="text" id="email" placeholder="Enter your email" required>
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" class="password" id="password" placeholder="Enter your password" required>
+                        <i class="uil uil-lock icon"></i>
+                        <i class="uil uil-eye-slash showHidePw"></i>
+                    </div>
+                    <div class="checkbox-text">
+                        <div class="checkbox-content">
+                            <input type="checkbox" id="logCheck">
+                            <label for="logCheck" class="text">Remember me</label>
+                        </div>
+                        <a href="./index2.html" class="text">Forget password? <p>Contact admin</p></a>
+                    </div>
+                    <div class="input-field button">
+                        <a href="acemployeedb.html"><<input onclick="login()" type="button" value="Login"></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+    const container = document.querySelector(".container"),
+        pwShowHide = document.querySelectorAll(".showHidePw"),
+        pwFields = document.querySelectorAll("password"),
+        login = document.queryselector("login-link");
+
+    //   js code to show/hide password and change icon
+    pwShowHide.forEach(eyeIcon =>{
+        eyeIcon.addEventListener("click", ()=>{
+            pwFields.forEach(pwField =>{
+                if(pwField.type ==="password"){
+                    pwField.type = "text";
+
+                    pwShowHide.forEach(icon =>{
+                        icon.classList.replace("uil-eye-slash", "uil-eye");
+                    })
+                }else{
+                    pwField.type = "password";
+
+                    pwShowHide.forEach(icon =>{
+                        icon.classList.replace("uil-eye", "uil-eye-slash");
+                    })
+                }
+            }) 
+        })
+    })
+    
+</script>
+
+<script type="module">
+    // Your web app's Firebase configuration
+  const firebaseConfig = {
+apiKey: "AIzaSyA9HFUTBUDAKPtJvP0Md7jkkurcRwKKil4",
+authDomain: "alliedconsult-login-database.firebaseapp.com",
+projectId: "alliedconsult-login-database",
+storageBucket: "alliedconsult-login-database.appspot.com",
+messagingSenderId: "882849305543",
+appId: "1:882849305543:web:55532d43ecb629f41fffe2"
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+// Initialize variables
+const auth = firebase.auth();
+const database = firebase.database();
+
+// Login function setup
+function login () {
+    //Input fields
+    email = document.getElementById('email').value
+    password = document.getElementById('password').value
+}
+if (validate.email(email) == false || validate.password(password) == false) {
+    alert('Email or password is not recognized')
+    return
+} 
+
+</script>    
+</body>
+</html>
+
